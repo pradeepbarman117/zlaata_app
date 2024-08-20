@@ -2,7 +2,7 @@ import { View, Text } from 'react-native'
 import React, { useContext } from 'react'
 import AuthProvider, { AuthContext } from './src/navigation/auth/AuthProvider';
 import AuthStack from './src/navigation/stack/AuthStack';
-import AppStack from './src/navigation/app/AppStack';
+import AppStacks from './src/navigation/app/AppStack';
 
 const App = () => {
   return (
@@ -24,7 +24,7 @@ const AppContainer = () => {
         (user == null || user == undefined) ? (
           <AuthStack />
         ) : (
-          <AppStack />
+          <AppStacks />
         )
       }
     </>
