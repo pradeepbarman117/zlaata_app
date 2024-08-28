@@ -21,7 +21,7 @@ const AppContainer = () => {
   return (
     <>
       {
-        (user == null || user == undefined) ? (
+        (!user) ? (
           <AuthStack />
         ) : (
           <AppStacks />

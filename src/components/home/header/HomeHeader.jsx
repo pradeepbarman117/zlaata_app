@@ -6,11 +6,11 @@ const HomeHeader = () => {
     return (
         <>
             <View style={css.container}>
-                <View style={{width:"30%"}}>
+                <View style={{ width: "30%" }}>
                     <Image source={require('../../../assets/img/icons/logo.png')} style={css.logo} />
                 </View>
                 <View style={css.container.childRight}>
-                    <View style={{width:"70%"}}>
+                    <View style={{ width: "70%" }}>
                         <TextInput placeholder='Type something....' />
                     </View>
                     <View>
@@ -28,10 +28,10 @@ const css = StyleSheet.create({
     container: {
         flexDirection: 'row',
         alignItems: 'center',
-        paddingHorizontal:15,
-        columnGap:10,
+        paddingHorizontal: 15,
+        columnGap: 10,
         justifyContent: 'space-between',
-        backgroundColor:"white",
+        backgroundColor: "white",
         childLeft: {},
         childRight: {
             flexDirection: 'row',
@@ -42,24 +42,29 @@ const css = StyleSheet.create({
             maxWidth: 320,
             backgroundColor: "#F8F8F8",
             paddingVertical: 5,
-            paddingLeft:20,
-            paddingRight:30,
+            paddingLeft: 20,
+            paddingRight: 30,
             borderRadius: 25,
         },
+        shadowColor: 'rgba(99, 99, 99, 1)', // The color of the shadow
+        shadowOffset: { width: 0, height: 2 }, // The offset of the shadow in X and Y directions
+        shadowOpacity: 1, // The opacity of the shadow
+        shadowRadius: 8, // The radius of the shadow blur
+        elevation: 8, // Required for Android to display the shadow
     },
     title: {
         fontSize: 22,
         fontWeight: '500',
-        color:"#202020",
+        color: "#202020",
     },
     input: {
         width: '80%',
         height: '100%',
     },
-    logo:{
-        width:110,
-        height:80,
-        resizeMode:'contain'
+    logo: {
+        width: 110,
+        height: 80,
+        resizeMode: 'contain'
     }
 });
 

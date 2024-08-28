@@ -47,7 +47,12 @@ const css = {
     borderRadius: 50,
     width: 80,
     height: 80,
-    padding: 5
+    padding: 5,
+    shadowColor: 'rgba(99, 99, 99, 1)', // The color of the shadow
+    shadowOffset: { width: 0, height: 2 }, // The offset of the shadow in X and Y directions
+    shadowOpacity: 1, // The opacity of the shadow
+    shadowRadius: 8, // The radius of the shadow blur
+    elevation: 8, // Required for Android to display the shadow
   },
   cardImg: {
     width: '100%',
