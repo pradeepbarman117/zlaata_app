@@ -25,7 +25,7 @@ const NewItems = () => {
                     <View style={css.cards}>
                         <TouchableOpacity activeOpacity={0.5} onPress={()=>{
                             redirect.navigate('ProductDetails')
-                        }}  >
+                        }}>
                             <View style={css.cardsList}>
                                 <Image source={{ uri: 'https://rukminim2.flixcart.com/image/612/612/xif0q/shoe/p/v/w/5-956-wht-fabbmate-white-original-imahf5mhwndgzy4z.jpeg?q=70' }} style={css.cardImg} />
                                 <View style={css.cardInfo}>
@@ -98,9 +98,8 @@ const css = StyleSheet.create({
     },
     title: {
         color: '#202020',
-        fontSize: 21,
+        fontSize: 18,
         fontWeight: '600',
-        // paddingLeft:10
     },
     seeAll: {
         flexDirection: 'row',
@@ -108,7 +107,7 @@ const css = StyleSheet.create({
         columnGap: 15,
     },
     seeAllText: {
-        fontSize: 16,
+        fontSize: 14,
         fontWeight: '500'
     },
     seeAllBox: {
@@ -125,7 +124,7 @@ const css = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         marginTop: 20,
-        // columnGap:15,
+        columnGap:10,
         marginBottom: 20,
     },
     cardsList: {
@@ -133,7 +132,6 @@ const css = StyleSheet.create({
         padding: 6,
         width: 130,
         borderRadius: 10,
-        marginHorizontal:10,
         shadowColor: 'rgba(99, 99, 99, 1)', // The color of the shadow
         shadowOffset: { width: 0, height: 2 }, // The offset of the shadow in X and Y directions
         shadowOpacity: 1, // The opacity of the shadow

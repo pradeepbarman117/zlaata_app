@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import Clock from 'react-native-vector-icons/Feather'
 
 const FlashSale = () => {
-  
 
   return (
     <>
@@ -63,7 +62,7 @@ const css = StyleSheet.create({
   },
   title: {
     color: '#202020',
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: '600'
   },
   clockText: {
@@ -93,7 +92,7 @@ const css = StyleSheet.create({
     elevation: 8, // Required for Android to display the shadow
     padding: 10,
     borderRadius: 10,
-    position:'relative'
+    position: 'relative'
   },
   image: {
     width: '100%',
@@ -101,17 +100,17 @@ const css = StyleSheet.create({
     resizeMode: 'contain',
     borderRadius: 10
   },
-  floatingText:{
+  floatingText: {
     position: 'absolute',
     top: 0,
-    right:0,
-    backgroundColor:'#F81140',
-    borderRadius:5,
-    paddingHorizontal:10,
-    paddingVertical:4,
-    fontSize:12,
-    color:'white',
-    fontWeight:'600'
+    right: 0,
+    backgroundColor: '#F81140',
+    borderRadius: 5,
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    fontSize: 12,
+    color: 'white',
+    fontWeight: '600'
   }
 })
 

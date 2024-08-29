@@ -1,8 +1,12 @@
-import { View, Text, TextInput, StyleSheet, Image } from 'react-native'
+import { View, Text, TextInput, StyleSheet, Image,Dimensions } from 'react-native'
 import React from 'react';
 import Icon from 'react-native-vector-icons/AntDesign';
 
+
+const realWidth = Dimensions.get('screen').width.toFixed(0);
 const HomeHeader = () => {
+    
+
     return (
         <>
             <View style={css.container}>
@@ -10,8 +14,8 @@ const HomeHeader = () => {
                     <Image source={require('../../../assets/img/icons/logo.png')} style={css.logo} />
                 </View>
                 <View style={css.container.childRight}>
-                    <View style={{ width: "70%" }}>
-                        <TextInput placeholder='Type something....' />
+                    <View style={{ flex:1 }}>
+                        <TextInput placeholder='Type something....'  style={css.input}/>
                     </View>
                     <View>
                         <Icon name="search1" size={22} width={20} color={'#0042E0'} />
@@ -58,12 +62,12 @@ const css = StyleSheet.create({
         color: "#202020",
     },
     input: {
-        width: '80%',
-        height: '100%',
+        width: '100%',
+        maxHeight:realWidth > 400 ? 74 : 45
     },
     logo: {
-        width: 110,
-        height: 80,
+        width: '100%',
+        aspectRatio:1,
         resizeMode: 'contain'
     }
 });

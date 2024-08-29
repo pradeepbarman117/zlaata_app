@@ -30,7 +30,7 @@ const CustomNavigation = ({ state, descriptors, navigation }) => {
         return (
           <>
             <TouchableOpacity key={index} onPress={onPress} style={{ flex: 1, alignItems: 'center' }}>
-              <Icons name={iconName[route.name]} size={20} color={isActive ? '#007bff' : '#777'} />
+              <Icons name={iconName[route.name]} size={18} color={isActive ? '#007bff' : '#777'} />
               <Text style={[css.text, { color: isActive ? '#007bff' : '#777' }]}>{label}</Text>
             </TouchableOpacity>
           </>
@@ -49,7 +49,7 @@ const css = StyleSheet.create({
     backgroundColor: 'white',
   },
   text: {
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: '600',
     marginTop: 5
   },

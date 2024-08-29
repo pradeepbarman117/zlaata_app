@@ -20,7 +20,7 @@ const ProductDetailsContent = () => {
         });
         setIsCollpsed(!isCollapsed);
     }
-
+    // FFEBEB
     return (
         <>
             <View style={css.container}>
@@ -68,26 +68,34 @@ const ProductDetailsContent = () => {
                     </View>
                     {
                         isCollapsed && (
-                            <View style={{ marginTop: 15, flexDirection: 'row', columnGap: 10 }}>
-                                <TouchableOpacity style={[variation.sizes, variation.sizes.active]}>
-                                    <Text style={variation.sizes.text}>XS</Text>
-                                </TouchableOpacity>
-                                <TouchableOpacity style={variation.sizes}>
-                                    <Text style={variation.sizes.text}>S</Text>
-                                </TouchableOpacity>
-                                <TouchableOpacity style={variation.sizes}>
-                                    <Text style={variation.sizes.text}>M</Text>
-                                </TouchableOpacity>
-                                <TouchableOpacity style={variation.sizes}>
-                                    <Text style={variation.sizes.text}>L</Text>
-                                </TouchableOpacity>
-                                <TouchableOpacity style={variation.sizes}>
-                                    <Text style={variation.sizes.text}>XL</Text>
-                                </TouchableOpacity>
-                                <TouchableOpacity style={variation.sizes}>
-                                    <Text style={variation.sizes.text}>XXL</Text>
-                                </TouchableOpacity>
-                            </View>
+                            <ScrollView horizontal>
+                                <View style={{ marginTop: 15, flexDirection: 'row', columnGap: 10 }}>
+                                    <TouchableOpacity style={[variation.sizes, variation.sizes.active]}>
+                                        <Text style={variation.sizes.text}>XS</Text>
+                                    </TouchableOpacity>
+                                    <TouchableOpacity style={variation.sizes}>
+                                        <Text style={variation.sizes.text}>S</Text>
+                                    </TouchableOpacity>
+                                    <TouchableOpacity style={variation.sizes}>
+                                        <Text style={variation.sizes.text}>M</Text>
+                                    </TouchableOpacity>
+                                    <TouchableOpacity style={variation.sizes}>
+                                        <Text style={variation.sizes.text}>L</Text>
+                                    </TouchableOpacity>
+                                    <TouchableOpacity style={variation.sizes}>
+                                        <Text style={variation.sizes.text}>XL</Text>
+                                    </TouchableOpacity>
+                                    <TouchableOpacity style={variation.sizes}>
+                                        <Text style={variation.sizes.text}>XXL</Text>
+                                    </TouchableOpacity>
+                                    <TouchableOpacity style={variation.sizes}>
+                                        <Text style={variation.sizes.text}>XL</Text>
+                                    </TouchableOpacity>
+                                    <TouchableOpacity style={variation.sizes}>
+                                        <Text style={variation.sizes.text}>XXL</Text>
+                                    </TouchableOpacity>
+                                </View>
+                            </ScrollView>
                         )
                     }
                     <View style={{ marginTop: 15 }}>
@@ -109,10 +117,16 @@ const ProductDetailsContent = () => {
                         </ScrollView>
                     </View>
                 </View>
-                <View style={{marginTop:16}}>
+                <View style={{ marginTop: 16 }}>
                     <View>
                         <Text style={variation.heading}>Specifications</Text>
                         <Text style={spec.subHeading}>Material</Text>
+                        <View>
+                            <Text>Cotton 40%</Text>
+                            <Text>Nylon 30%</Text>
+                            <Text>Cotton 40%</Text>
+                            <Text>Cotton 30%</Text>
+                        </View>
                     </View>
                 </View>
             </View>
@@ -214,11 +228,11 @@ const variation = StyleSheet.create({
 
 
 const spec = StyleSheet.create({
-    subHeading:{
-        fontSize:16,
-        fontWeight:'500',
-        color:'#202020',
-        marginTop:8
+    subHeading: {
+        fontSize: 16,
+        fontWeight: '500',
+        color: '#202020',
+        marginTop: 8
     }
 });
 
