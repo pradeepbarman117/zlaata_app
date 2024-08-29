@@ -90,7 +90,6 @@ const NewItems = () => {
 const css = StyleSheet.create({
     container: {
         paddingHorizontal: 20,
-        // paddingVertical: 10
     },
     titleFlex: {
         flexDirection: 'row',
@@ -99,7 +98,7 @@ const css = StyleSheet.create({
     },
     title: {
         color: '#202020',
-        fontSize: 21,
+        fontSize: 18,
         fontWeight: '600',
     },
     seeAll: {
@@ -108,7 +107,7 @@ const css = StyleSheet.create({
         columnGap: 15,
     },
     seeAllText: {
-        fontSize: 16,
+        fontSize: 14,
         fontWeight: '500'
     },
     seeAllBox: {
@@ -124,15 +123,20 @@ const css = StyleSheet.create({
     cards: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        columnGap: 15,
         marginTop: 20,
+        columnGap:10,
         marginBottom: 20,
     },
     cardsList: {
         backgroundColor: 'white',
         padding: 6,
         width: 130,
-        borderRadius: 10
+        borderRadius: 10,
+        shadowColor: 'rgba(99, 99, 99, 1)', // The color of the shadow
+        shadowOffset: { width: 0, height: 2 }, // The offset of the shadow in X and Y directions
+        shadowOpacity: 1, // The opacity of the shadow
+        shadowRadius: 8, // The radius of the shadow blur
+        elevation: 8, // Required for Android to display the shadow
     },
     cardImg: {
         width: '100%',

@@ -1,4 +1,4 @@
-import { View, Text, Image } from 'react-native'
+import { View, Text, Image, ScrollView } from 'react-native'
 import React from 'react'
 
 const TopProduct = () => {
@@ -32,22 +32,27 @@ const css = {
   },
   title: {
     color: '#202020',
-    fontSize: 21,
+    fontSize: 18,
     fontWeight: '600',
   },
   cards: {
     flexDirection: 'row',
     alingnItems: 'center',
-    justifyContent: 'space-between',
     marginTop: 15,
-    columnGap: 15,
+    columnGap: '5%',
+    justifyContent:'space-between',
   },
   cardList: {
     backgroundColor: 'white',
     borderRadius: 50,
-    width: 80,
-    height: 80,
-    padding: 5
+    width: '20%',
+    padding: 5,
+    shadowColor: 'rgba(99, 99, 99, 1)', // The color of the shadow
+    shadowOffset: { width: 0, height: 2 }, // The offset of the shadow in X and Y directions
+    shadowOpacity: 1, // The opacity of the shadow
+    shadowRadius: 8, // The radius of the shadow blur
+    elevation: 8, // Required for Android to display the shadow
+    aspectRatio: 1
   },
   cardImg: {
     width: '100%',
