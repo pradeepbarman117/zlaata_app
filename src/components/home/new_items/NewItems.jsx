@@ -1,90 +1,41 @@
-import { View, Text, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native'
-import React from 'react';
-import Icons from 'react-native-vector-icons/MaterialIcons';
+import { View, Text, StyleSheet, TouchableOpacity, Image, FlatList, ScrollView } from 'react-native'
+import React, { useEffect, useMemo, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
+import useProducts from '../../../hooks/product/useProductList';
+import NewItemsProduct from './NewItemsProduct';
 
 const NewItems = () => {
-    const redirect = useNavigation();
+    const navigation = useNavigation();
+
+    const { data: productsData } = useProducts();
+    const products = useMemo(() => productsData?.message.products.slice(0, 6) || [], [productsData?.message.products]);
+
     return (
-        <>
-            <View style={css.container}>
-                <View style={css.titleFlex}>
-                    <View>
-                        <Text style={css.title}>New Items</Text>
-                    </View>
-                    <TouchableOpacity onPress={() => redirect.navigate('Account')}>
-                        <View style={css.seeAll}>
-                            <Text style={css.seeAllText}>See All</Text>
-                            <View style={css.seeAllBox}>
-                                <Image source={require('../../../assets/img/icons/Arrow.png')} />
-                            </View>
+        <View style={css.container}>
+            <View style={css.titleFlex}>
+                <Text style={css.title}>New Items</Text>
+                <TouchableOpacity onPress={() => navigation.navigate('Account')}>
+                    <View style={css.seeAll}>
+                        <Text style={css.seeAllText}>See All</Text>
+                        <View style={css.seeAllBox}>
+                            <Image source={require('../../../assets/img/icons/Arrow.png')} />
                         </View>
-                    </TouchableOpacity>
-                </View>
-                <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-                    <View style={css.cards}>
-                        <TouchableOpacity activeOpacity={0.5} onPress={()=>{
-                            redirect.navigate('ProductDetails')
-                        }}>
-                            <View style={css.cardsList}>
-                                <Image source={{ uri: 'https://rukminim2.flixcart.com/image/612/612/xif0q/shoe/p/v/w/5-956-wht-fabbmate-white-original-imahf5mhwndgzy4z.jpeg?q=70' }} style={css.cardImg} />
-                                <View style={css.cardInfo}>
-                                    <Text style={css.cardTitle}>Lorem ipsu dolor sit amet consectetur.</Text>
-                                    <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 5 }}>
-                                        <Icons name="currency-rupee" style={css.cardRupee} />
-                                        <Text style={css.cardPrice}>17,00</Text>
-                                    </View>
-                                </View>
-                            </View>
-                        </TouchableOpacity>
-                        <TouchableOpacity activeOpacity={0.5} onPress={()=>{
-                            redirect.navigate('ProductDetails')
-                        }}>
-                            <View style={css.cardsList}>
-                                <Image source={{ uri: 'https://rukminim2.flixcart.com/image/612/612/xif0q/shoe/q/g/l/-original-imagsfdvebvyzkxa.jpeg?q=70' }} style={css.cardImg} />
-                                <View style={css.cardInfo}>
-                                    <Text style={css.cardTitle}>Lorem ipsu dolor sit amet consectetur.</Text>
-                                    <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 5 }}>
-                                        <Icons name="currency-rupee" style={css.cardRupee} />
-                                        <Text style={css.cardPrice}>2,999</Text>
-                                    </View>
-                                </View>
-                            </View>
-                        </TouchableOpacity>
-                        <TouchableOpacity activeOpacity={0.5} onPress={()=>{
-                            redirect.navigate('ProductDetails')
-                        }}>
-                            <View style={css.cardsList}>
-                                <Image source={{ uri: 'https://rukminim2.flixcart.com/image/612/612/xif0q/hand-messenger-bag/5/o/y/women-s-leatherette-handbag-black-chainstrap-black-evs-110-36-original-imahfet93ng2tvbk.jpeg?q=70' }} style={css.cardImg} />
-                                <View style={css.cardInfo}>
-                                    <Text style={css.cardTitle}>Lorem ipsu dolor sit amet consectetur.</Text>
-                                    <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 5 }}>
-                                        <Icons name="currency-rupee" style={css.cardRupee} />
-                                        <Text style={css.cardPrice}>3,000</Text>
-                                    </View>
-                                </View>
-                            </View>
-                        </TouchableOpacity>
-                        <TouchableOpacity activeOpacity={0.5} onPress={()=>{
-                            redirect.navigate('ProductDetails')
-                        }}>
-                            <View style={css.cardsList}>
-                                <Image source={{ uri: 'https://rukminim2.flixcart.com/image/612/612/kwmfqfk0/watch/q/h/k/1-es4782-fossil-women-original-imag998fzzpknane.jpeg?q=70' }} style={css.cardImg} />
-                                <View style={css.cardInfo}>
-                                    <Text style={css.cardTitle}>Lorem ipsu dolor sit amet consectetur.</Text>
-                                    <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 5 }}>
-                                        <Icons name="currency-rupee" style={css.cardRupee} />
-                                        <Text style={css.cardPrice}>17,00</Text>
-                                    </View>
-                                </View>
-                            </View>
-                        </TouchableOpacity>
                     </View>
-                </ScrollView>
+                </TouchableOpacity>
             </View>
-        </>
-    )
-}
+            <ScrollView nestedScrollEnabled={true}>
+                <FlatList
+                    data={products}
+                    renderItem={({ item }) => <NewItemsProduct product={item} css={css} />}
+                    keyExtractor={(item) => item.id.toString()}
+                    horizontal
+                    showsHorizontalScrollIndicator={false}
+                    contentContainerStyle={css.cards}
+                />
+            </ScrollView>
+        </View>
+    );
+};
 
 
 const css = StyleSheet.create({
@@ -126,6 +77,7 @@ const css = StyleSheet.create({
         marginTop: 20,
         columnGap:10,
         marginBottom: 20,
+        paddingHorizontal:5
     },
     cardsList: {
         backgroundColor: 'white',
@@ -141,7 +93,7 @@ const css = StyleSheet.create({
     cardImg: {
         width: '100%',
         aspectRatio: 1,
-        borderRadius: 10
+        borderRadius: 10,
     },
     cardInfo: {
         padding: 6,

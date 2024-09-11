@@ -3,13 +3,16 @@ import React, { useContext } from 'react'
 import AuthProvider, { AuthContext } from './src/navigation/auth/AuthProvider';
 import AuthStack from './src/navigation/stack/AuthStack';
 import AppStacks from './src/navigation/app/AppStack';
-
+import { QueryClientProvider } from '@tanstack/react-query'
+import queryClient from './src/services/query/queryClient';
 const App = () => {
   return (
     <>
-      <AuthProvider>
-        <AppContainer />
-      </AuthProvider>
+      <QueryClientProvider client={queryClient}>
+          <AuthProvider>
+            <AppContainer />
+          </AuthProvider>
+      </QueryClientProvider>
     </>
   )
 };

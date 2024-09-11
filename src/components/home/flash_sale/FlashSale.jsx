@@ -1,53 +1,44 @@
-import { View, Text, StyleSheet, Image } from 'react-native'
-import React, { useEffect, useState } from 'react';
+import { View, Text, StyleSheet, Image, FlatList } from 'react-native'
+import React, { useEffect, useMemo, useState } from 'react';
 import Clock from 'react-native-vector-icons/Feather'
+import useProducts from '../../../hooks/product/useProductList';
+import FlashSaleProduct from './FlashSaleProduct';
 
 const FlashSale = () => {
+  const { data: productsData } = useProducts();
+  const [flashSaleProducts, setFlashSaleProducts] = useState([]);
+  const numColumns = 3;
+
+  useEffect(() => {
+    setFlashSaleProducts(
+      productsData?.message.products.filter((product) => product.id <= 6) || []
+    );
+  }, [productsData]);
 
   return (
-    <>
-      <View style={css.container}>
-        <View style={css.flex}>
-          <Text style={css.title}>Flash Sale</Text>
-          <View style={[css.flex, { columnGap: 16 }]}>
-            <Clock name="clock" size={20} color={'#004BFE'} />
-            <View style={[css.flex, { columnGap: 16, width: 120, justifyContent: 'flex-end' }]}>
-              <Text style={css.clockText}>00</Text>
-              <Text style={css.clockText}>36</Text>
-              <Text style={css.clockText}>46</Text>
-            </View>
-          </View>
-        </View>
-        <View style={css.cards}>
-          <View style={css.cardList}>
-            <Image source={{ uri: 'https://rukminim2.flixcart.com/image/612/612/xif0q/headphone/s/7/f/-original-imahf4qppx6fkxtw.jpeg?q=70' }} style={css.image} />
-            <Text style={css.floatingText}>20% off</Text>
-          </View>
-          <View style={css.cardList}>
-            <Image source={{ uri: 'https://rukminim2.flixcart.com/image/312/312/xif0q/computer/x/n/j/x1502za-ej953ws-thin-and-light-laptop-asus-original-imah42fta8gfzz3y.jpeg?q=70' }} style={css.image} />
-            <Text style={css.floatingText}>20% off</Text>
-          </View>
-          <View style={css.cardList}>
-            <Image source={{ uri: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/k/l/l/-original-imagtc5fz9spysyk.jpeg?q=70' }} style={css.image} />
-            <Text style={css.floatingText}>20% off</Text>
-          </View>
-          <View style={css.cardList}>
-            <Image source={{ uri: 'https://rukminim2.flixcart.com/image/612/612/xif0q/shoe/g/q/i/10-25264048-44-roadster-white-original-imahfbhhnwftyudq.jpeg?q=70' }} style={css.image} />
-            <Text style={css.floatingText}>20% off</Text>
-          </View>
-          <View style={css.cardList}>
-            <Image source={{ uri: 'https://rukminim2.flixcart.com/image/612/612/xif0q/headphone/s/7/f/-original-imahf4qppx6fkxtw.jpeg?q=70' }} style={css.image} />
-            <Text style={css.floatingText}>20% off</Text>
-          </View>
-          <View style={css.cardList}>
-            <Image source={{ uri: 'https://rukminim2.flixcart.com/image/312/312/xif0q/computer/x/n/j/x1502za-ej953ws-thin-and-light-laptop-asus-original-imah42fta8gfzz3y.jpeg?q=70' }} style={css.image} />
-            <Text style={css.floatingText}>20% off</Text>
+    <View style={css.container}>
+      <View style={css.flex}>
+        <Text style={css.title}>Flash Sale</Text>
+        <View style={[css.flex, { columnGap: 16 }]}>
+          <Clock name="clock" size={20} color="#004BFE" />
+          <View style={[css.flex, { columnGap: 16, width: 120, justifyContent: 'flex-end' }]}>
+            <Text style={css.clockText}>00</Text>
+            <Text style={css.clockText}>36</Text>
+            <Text style={css.clockText}>46</Text>
           </View>
         </View>
       </View>
-    </>
-  )
-}
+      <FlatList
+        data={flashSaleProducts}
+        key={numColumns}
+        renderItem={({ item }) => <FlashSaleProduct css={css} product={item} />}
+        keyExtractor={(item) => item.id}
+        numColumns={numColumns}
+        columnWrapperStyle={css.cards}
+      />
+    </View>
+  );
+};
 
 
 const css = StyleSheet.create({
@@ -75,11 +66,13 @@ const css = StyleSheet.create({
   },
   cards: {
     flexDirection: 'row',
-    alignItems: 'center',
     columnGap: '3.5%',
-    rowGap: 12,
     flexWrap: 'wrap',
-    marginTop: 16
+    alignItems: 'center',
+    width: '100%',
+    overflow: 'visible',
+    paddingHorizontal: 5,
+    paddingVertical:8
   },
   cardList: {
     width: '31%',
@@ -92,7 +85,7 @@ const css = StyleSheet.create({
     elevation: 8, // Required for Android to display the shadow
     padding: 10,
     borderRadius: 10,
-    position: 'relative'
+    position: 'relative',
   },
   image: {
     width: '100%',
