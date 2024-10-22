@@ -7,8 +7,8 @@ import Icons from 'react-native-vector-icons/MaterialIcons';
 const NewItemsProduct = ({product,css}) => {
   const redirect = useNavigation();
 
-  const {product_image:{image}} = product
-  const imageUrlArray = JSON.parse(image);
+//   const {product_image:{image}} = product
+//   const imageUrlArray = JSON.parse(image);
 
   return (
     <>
@@ -16,9 +16,9 @@ const NewItemsProduct = ({product,css}) => {
             redirect.navigate('ProductDetails')
         }}>
             <View style={css.cardsList}>
-                <Image source={{ uri: `${imageUrlArray[0]}`}} style={css.cardImg} />
+                <Image source={{ uri: `https://rukminim2.flixcart.com/image/612/612/xif0q/smartwatch/9/z/z/-original-imagxp8tfbntmsgk.jpeg?q=70`}} style={css.cardImg} />
                 <View style={css.cardInfo}>
-                    <Text style={css.cardTitle} numberOfLines={2} ellipsizeMode="tail">{product.product.name}</Text>
+                    <Text style={css.cardTitle} numberOfLines={2} ellipsizeMode="tail">Product Heading</Text>
                     <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 5 }}>
                         <Icons name="currency-rupee" style={css.cardRupee} />
                         <Text style={css.cardPrice}>17,00</Text>

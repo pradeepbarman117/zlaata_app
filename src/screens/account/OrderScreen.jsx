@@ -1,12 +1,12 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 
-const SingUp = () => {
+const OrderScreen = () => {
   return (
     <View>
-      <Text>SingUp</Text>
+      <Text>Order List</Text>
     </View>
   )
 }
 
-export default SingUp
+export default OrderScreen
