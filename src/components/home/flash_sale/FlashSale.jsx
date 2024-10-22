@@ -9,11 +9,11 @@ const FlashSale = () => {
   const [flashSaleProducts, setFlashSaleProducts] = useState([]);
   const numColumns = 3;
 
-  useEffect(() => {
-    setFlashSaleProducts(
-      productsData?.message.products.filter((product) => product.id <= 6) || []
-    );
-  }, [productsData]);
+  // useEffect(() => {
+  //   setFlashSaleProducts(
+  //     productsData?.message.products.filter((product) => product.id <= 6) || []
+  //   );
+  // }, [productsData]);
 
   return (
     <View style={css.container}>
@@ -28,14 +28,22 @@ const FlashSale = () => {
           </View>
         </View>
       </View>
-      <FlatList
+      {/* <FlatList
         data={flashSaleProducts}
         key={numColumns}
         renderItem={({ item }) => <FlashSaleProduct css={css} product={item} />}
         keyExtractor={(item) => item.id}
         numColumns={numColumns}
         columnWrapperStyle={css.cards}
-      />
+      /> */}
+      <View style={css.cards}>
+        <FlashSaleProduct css={css}/>
+        <FlashSaleProduct css={css}/>
+        <FlashSaleProduct css={css}/>
+        <FlashSaleProduct css={css}/>
+        <FlashSaleProduct css={css}/>
+        <FlashSaleProduct css={css}/>
+      </View>
     </View>
   );
 };
@@ -72,7 +80,8 @@ const css = StyleSheet.create({
     width: '100%',
     overflow: 'visible',
     paddingHorizontal: 5,
-    paddingVertical:8
+    paddingVertical:8,
+    rowGap: 15
   },
   cardList: {
     width: '31%',

@@ -8,7 +8,7 @@ const NewItems = () => {
     const navigation = useNavigation();
 
     const { data: productsData } = useProducts();
-    const products = useMemo(() => productsData?.message.products.slice(0, 6) || [], [productsData?.message.products]);
+    // const products = useMemo(() => productsData?.message.products.slice(0, 6) || [], [productsData?.message.products]);
 
     return (
         <View style={css.container}>
@@ -23,15 +23,26 @@ const NewItems = () => {
                     </View>
                 </TouchableOpacity>
             </View>
-            <ScrollView nestedScrollEnabled={true}>
-                <FlatList
+            <ScrollView nestedScrollEnabled={true} horizontal>
+                {/* <FlatList
                     data={products}
                     renderItem={({ item }) => <NewItemsProduct product={item} css={css} />}
                     keyExtractor={(item) => item.id.toString()}
                     horizontal
                     showsHorizontalScrollIndicator={false}
                     contentContainerStyle={css.cards}
-                />
+                /> */}
+                <View style={css.cards}>
+                    <NewItemsProduct css={css}/>
+                    <NewItemsProduct css={css}/>
+                    <NewItemsProduct css={css}/>
+                    <NewItemsProduct css={css}/>
+                    <NewItemsProduct css={css}/>
+                    <NewItemsProduct css={css}/>
+                    <NewItemsProduct css={css}/>
+                    <NewItemsProduct css={css}/>
+                    <NewItemsProduct css={css}/>
+                </View>
             </ScrollView>
         </View>
     );
